@@ -55,10 +55,24 @@ class LinkedList:
             len += 1
             hptr = hptr.next
         return len
+    
+    def remove_start(self):
+        if self.head is None:
+            return
+        self.head = self.head.next
+        
+    def remove_end(self):
+        hptr = self.head
+        while(hptr.next.next):
+            hptr = hptr.next
+        hptr.next = None
         
         
 if __name__ == "__main__":
     ll = LinkedList()
     ll.Initialize_List([10,20,30,40,50])
+    ll.Print_List()
+    print(ll.length())
+    ll.remove_start()
     ll.Print_List()
     print(ll.length())
