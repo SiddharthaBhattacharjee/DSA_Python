@@ -86,6 +86,22 @@ class LinkedList:
                 return
             hptr = hptr.next
             c += 1
+            
+        
+    def Insert_at(self,data,pos):
+        if pos<0 and pos>self.length():
+            return
+        elif pos==0:
+            self.insert_at_start(data)
+            return
+        c = 0
+        hptr = self.head
+        while hptr:
+            if c==pos-1:
+                hptr.next = Node(data,hptr.next)
+                return
+            hptr = hptr.next
+            c += 1
                 
                 
             
@@ -95,6 +111,6 @@ if __name__ == "__main__":
     ll.Initialize_List([10,20,30,40,50])
     ll.Print_List()
     print(ll.length())
-    ll.remove_at(4)
+    ll.Insert_at(69,2)
     ll.Print_List()
     print(ll.length())
