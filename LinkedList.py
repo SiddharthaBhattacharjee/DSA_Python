@@ -102,15 +102,34 @@ class LinkedList:
                 return
             hptr = hptr.next
             c += 1
-                
-                
-            
+    
+    def insert_after_value(self,data,val):
+        hptr = self.head
+        while hptr:
+            if hptr.data == val:
+                hptr.next = Node(data,hptr.next)
+                return
+            hptr = hptr.next
+        print("Value not found!")    
+    
+    def remove_by_value(self,val):
+        hptr = self.head
+        if hptr.data == val:
+            self.remove_start()
+            return
+        while hptr:
+            if hptr.next and hptr.next.data == val:
+                x = hptr.next.next
+                del hptr.next
+                hptr.next = x
+                return
+            hptr = hptr.next      
         
 if __name__ == "__main__":
     ll = LinkedList()
     ll.Initialize_List([10,20,30,40,50])
     ll.Print_List()
     print(ll.length())
-    ll.Insert_at(69,2)
+    ll.remove_by_value(50)
     ll.Print_List()
     print(ll.length())
