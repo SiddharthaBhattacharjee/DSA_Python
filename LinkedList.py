@@ -1,9 +1,12 @@
+#Node , individual cell of the LinkedList
 class Node:
     def __init__(self,data=None,next=None):
         self.data = data
         self.next = next
         
+#LinkedList Class
 class LinkedList:
+    #Constructor , no parameter at instanciation
     def __init__(self):
         self.head = None
         
@@ -16,11 +19,15 @@ class LinkedList:
             self.head = Node(data,None)
             return
         hptr = self.head
-        while hptr:
-            if hptr.next is None:
-                hptr.next = Node(data,None)
-                break
+            # while hptr.next:
+            #     if hptr.next is None:
+            #         hptr.next = Node(data,None)
+            #         break
+            #     hptr = hptr.next
+            #SlightLy Improved
+        while hptr.next:
             hptr = hptr.next
+        hptr.next = Node(data,None)
         
     def Print_List(self):
         hptr = self.head
@@ -36,11 +43,22 @@ class LinkedList:
         Lstr += 'None'
         print(Lstr)
         
+    def Initialize_List(self, datas):
+        self.head = None
+        for i in datas:
+            self.insert_at_end(i)
+            
+    def length(self):
+        len = 0
+        hptr = self.head
+        while hptr:
+            len += 1
+            hptr = hptr.next
+        return len
+        
         
 if __name__ == "__main__":
     ll = LinkedList()
-    ll.insert_at_end(10)
-    ll.insert_at_end(20)
-    ll.insert_at_end(30)
-    ll.insert_at_end(40)
+    ll.Initialize_List([10,20,30,40,50])
     ll.Print_List()
+    print(ll.length())
