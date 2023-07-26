@@ -59,20 +59,42 @@ class LinkedList:
     def remove_start(self):
         if self.head is None:
             return
-        self.head = self.head.next
+        t = self.head.next
+        del self.head
+        self.head = t
         
     def remove_end(self):
         hptr = self.head
         while(hptr.next.next):
             hptr = hptr.next
+        del hptr.next
         hptr.next = None
         
+    def remove_at(self,pos):
+        if pos<0 and pos>=self.length():
+            return
+        elif pos==0:
+            self.remove_start()
+            return
+        c = 0
+        hptr = self.head
+        while hptr.next:
+            if c==pos-1:
+                x = hptr.next.next
+                del hptr.next
+                hptr.next = x
+                return
+            hptr = hptr.next
+            c += 1
+                
+                
+            
         
 if __name__ == "__main__":
     ll = LinkedList()
     ll.Initialize_List([10,20,30,40,50])
     ll.Print_List()
     print(ll.length())
-    ll.remove_start()
+    ll.remove_at(4)
     ll.Print_List()
     print(ll.length())
