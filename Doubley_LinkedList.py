@@ -39,7 +39,7 @@ class DoubleyLinkedList:
         if self.head is None:
             print("Empty Double Linked List!")
             return
-        op = ""
+        op = "None<-->"
         hptr = self.head
         while hptr:
             op = op + str(hptr.data) + "<-->"
@@ -67,6 +67,39 @@ class DoubleyLinkedList:
                 return
             c+=1
             hptr = hptr.next
+            
+    def remove_at_start(self):
+        self.head = self.head.next
+        del self.head.prev
+        self.head.prev = None
+    
+    def remove_at_end(self):
+        self.tail = self.tail.prev
+        del self.tail.next
+        self.tail.next = None
+        
+    def remove_at(self,pos):
+        if pos<0 or pos>=self.length():
+            print("Invalid Position !")
+            return
+        if pos == 0:
+            self.remove_at_start()
+            return
+        if pos == self.length() - 1:
+            self.remove_at_end()
+            return
+        c = 0
+        ptr = self.head
+        while ptr:
+            if c+1 == pos:
+                ptr.next = ptr.next.next
+                del ptr.next.prev
+                ptr.next.prev = ptr
+                return
+            c += 1
+            ptr = ptr.next
+            
+        
     
 if __name__ == "__main__":
     ll = DoubleyLinkedList()
@@ -75,5 +108,8 @@ if __name__ == "__main__":
     ll.insert_at_start(30)
     ll.insert_at_end(40)
     ll.insert_at(50,4)
+    ll.print_list()
+    print(ll.length())
+    ll.remove_at(3)
     ll.print_list()
     print(ll.length())
