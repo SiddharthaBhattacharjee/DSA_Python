@@ -27,6 +27,14 @@ class DoubleyLinkedList:
         self.tail = self.tail.next
         return
     
+    def length(self):
+        c = 0
+        hptr = self.head
+        while hptr:
+            c += 1
+            hptr = hptr.next
+        return c
+    
     def print_list(self):
         if self.head is None:
             print("Empty Double Linked List!")
@@ -46,3 +54,4 @@ if __name__ == "__main__":
     ll.insert_at_end(20)
     ll.insert_at_start(30)
     ll.print_list()
+    print(ll.length())
