@@ -56,6 +56,7 @@ class DoubleyLinkedList:
         hptr = self.head
         if pos == 0:
             self.insert_at_start(data)
+            return
         if pos == self.length():
             self.insert_at_end(data)
             return
