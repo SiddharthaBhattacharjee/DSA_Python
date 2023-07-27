@@ -48,10 +48,32 @@ class DoubleyLinkedList:
         print(op)
         return
     
+    def insert_at(self,data,pos):
+        if pos<0 or pos>self.length():
+            print("Invalid Position!")
+            return
+        c = 0
+        hptr = self.head
+        if pos == 0:
+            self.insert_at_start(data)
+        if pos == self.length():
+            self.insert_at_end(data)
+            return
+        while hptr:
+            if c+1 == pos:
+                x = Node(data,hptr.next,hptr)
+                hptr.next = x
+                x.next.prev = x
+                return
+            c+=1
+            hptr = hptr.next
+    
 if __name__ == "__main__":
     ll = DoubleyLinkedList()
     ll.insert_at_end(10)
     ll.insert_at_end(20)
     ll.insert_at_start(30)
+    ll.insert_at_end(40)
+    ll.insert_at(50,4)
     ll.print_list()
     print(ll.length())
