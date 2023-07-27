@@ -99,6 +99,15 @@ class DoubleyLinkedList:
             c += 1
             ptr = ptr.next
             
+    def search(self,item):
+        ptr = self.head
+        c=0
+        while ptr:
+            if ptr.data == item:
+                return c
+            ptr = ptr.next
+            c += 1
+        return -1
         
     
 if __name__ == "__main__":
@@ -113,3 +122,4 @@ if __name__ == "__main__":
     ll.remove_at(3)
     ll.print_list()
     print(ll.length())
+    print(ll.search(20))
