@@ -12,12 +12,12 @@ class Hash_Map:
         return h%100
     # %10 since we want the index range to be 0 to 99
 #Operational Functions
-    def add(self,key,value):
+    def __setitem__(self,key,value):
         index = self.get_hash(key)
         self.map[index] = value
         return
     
-    def get(self,key):
+    def __getitem__(self,key):
         index = self.get_hash(key)
         return self.map[index]
     
@@ -27,12 +27,12 @@ class Hash_Map:
 
 if __name__ == "__main__":
     Stock_Prices = Hash_Map()
-    Stock_Prices.add('march 6',310)
-    Stock_Prices.add('april 7',401)
-    Stock_Prices.add('may 8',388)
-    Stock_Prices.add('june 10',416)
+    Stock_Prices['march 6'] = 310
+    Stock_Prices['april 7'] = 410
+    Stock_Prices['may 8'] = 388
+    Stock_Prices['june 10'] = 416
     
-    print(Stock_Prices.get('april 7'))
+    print(Stock_Prices['april 7'])
     
 
 
