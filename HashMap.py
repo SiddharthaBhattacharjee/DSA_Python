@@ -23,7 +23,10 @@ class Hash_Map:
     
     def __delitem__(self,key):
         index = self.get_hash(key)
-        self.map[index] = None    
+        self.map[index] = None
+        
+# Same as implementation of Dictionary
+# Does not handle collision yet 
     
 
 if __name__ == "__main__":
