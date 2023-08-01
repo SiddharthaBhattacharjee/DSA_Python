@@ -45,3 +45,26 @@ class Solution:
             opptr = opptr.next
         opptr = None
         return op
+
+# Improved Solution : 
+class Solution2:
+    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+        if not(list1 or list2):
+                return None
+        if (list1 or list2) and not(list1 and list2):
+            return list1 if list1 else list2
+        op = ListNode()
+        opptr = op
+        while list1 and list2:
+            if(list1.val < list2.val):
+                opptr.val = list1.val
+                list1 = list1.next
+            else:
+                opptr.val = list2.val
+                list2 = list2.next
+            if list1 and list2:
+                opptr.next = ListNode()
+                opptr = opptr.next
+        if list1 or list2:
+            opptr.next = list1 if list1 else list2
+        return op
