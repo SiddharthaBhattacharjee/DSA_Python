@@ -21,8 +21,9 @@ class Hash_Map:
         index = self.get_hash(key)
         return self.map[index]
     
-    def delete(self,key):
-        self.map[key] = None      
+    def __delitem__(self,key):
+        index = self.get_hash(key)
+        self.map[index] = None    
     
 
 if __name__ == "__main__":
@@ -34,6 +35,9 @@ if __name__ == "__main__":
     
     print(Stock_Prices['april 7'])
     
+    del Stock_Prices['april 7']
+    
+    print(Stock_Prices['april 7'])
 
 
 
