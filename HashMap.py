@@ -35,8 +35,10 @@ if __name__ == "__main__":
     Stock_Prices['april 7'] = 410
     Stock_Prices['may 8'] = 388
     Stock_Prices['june 10'] = 416
+    Stock_Prices['may 2'] = 322 # will cause collision 
     
     print(Stock_Prices['april 7'])
+    print(Stock_Prices['march 6']) # collision detected
     
     del Stock_Prices['april 7']
     
